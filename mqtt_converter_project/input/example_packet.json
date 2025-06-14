@@ -1,0 +1,10 @@
+{
+  "packetType": "PUBLISH",
+  "packetId": "client1",
+  "topicName": "client1/status",
+  "payloadFormatIndicator": 0,
+  "contentType": "json",
+  "qos": 1,
+  "retainFlag": true,
+  "payload": "online"
+}
