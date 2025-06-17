@@ -20,7 +20,7 @@ def main():
     # 1. Leitura de dados pelo FileReader
     reader = FileReader(base_dir)
     config = reader.read_config()
-    dados_do_pacote = reader.read_input_packet('example_packet.json')
+    dados_do_pacote = reader.read_input_packet('packet_binary.json')
 
     # 2. Criação do pacote
     pacote = MqttPacket(dados_do_pacote)

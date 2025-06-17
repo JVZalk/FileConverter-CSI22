@@ -1,0 +1,11 @@
+{
+  "packetType": "PUBLISH",
+  "dup": false,
+  "qos": 1,
+  "retainFlag": false,
+  "topicName": "dispositivos/data",
+  "packetId": "data-hex-001",
+  "payloadFormatIndicator": 1,
+  "contentType": "hex",
+  "payload": "54656D7065726174757261203D203130"
+}

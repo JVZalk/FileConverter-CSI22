@@ -1,7 +1,7 @@
 {
-  "target_format": "dat",
+  "target_format": "json",
   "input_path": "input",
   "output_path": "output",
   "logging_enabled": false,
-  "compression_enabled": true
+  "compression_enabled": false
 }
