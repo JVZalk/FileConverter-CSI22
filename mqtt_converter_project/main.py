@@ -15,7 +15,7 @@ with open(config_path, 'r') as f:
     config = json.load(f)
     target_format = config['target_format']
 
-input_path = os.path.join(base_dir, 'input', 'example_packet.json')
+input_path = os.path.join(base_dir, 'input', 'example2_packet.json')
 with open(input_path, 'r') as f:
     dados_do_pacote = json.load(f)
 
