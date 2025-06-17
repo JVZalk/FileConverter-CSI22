@@ -1,3 +1,12 @@
+<<<<<<< HEAD
 metrics.humidity,metrics.temperature,sensorDate,sensorId
 65.2,24.5,24/02/25,
 65.2,24.5,,sala-01
+=======
+metrics,metrics.humidity,metrics.temperature,sensorId
+"{'temperature': 24.5, 'humidity': 65.2}",,,sala-01
+"{'temperature': 24.5, 'humidity': 65.2}",,,sala-01
+,65.2,24.5,sala-01
+,65.2,24.5,sala-01
+,65.2,24.5,sala-01
+>>>>>>> bde38eac44464420deae04d3b06b1e7fc9668afa
