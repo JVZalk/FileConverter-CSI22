@@ -1,8 +1,11 @@
 from .encoder_interface import AbstractEncoder
 from .json_encoder import JsonEncoder
 from .csv_encoder import CsvEncoder
-from .xlsx_encoder import XlsxEncoder
 from .dat_encoder import DatEncoder
+from .xml_encoder import XmlEncoder
+from .binary_encoder import BinaryEncoder
+from .string_encoder import StringEncoder
+from .hex_encoder import HexEncoder
 
 class EncoderFactory:
     """
@@ -20,10 +23,16 @@ class EncoderFactory:
             return JsonEncoder()
         elif format_name.lower() == 'csv':
             return CsvEncoder()
-        elif format_name.lower() == 'xlsx':
-            return  XlsxEncoder()
         elif format_name.lower() == 'dat':
             return DatEncoder()
+        elif format_name.lower() == 'xml':
+            return XmlEncoder()
+        elif format_name.lower() == 'binary':
+            return BinaryEncoder()
+        elif format_name.lower() == 'string':
+            return StringEncoder()
+        elif format_name.lower() == 'hex':
+            return HexEncoder()
 
         else:
             raise ValueError(f"Formato de codificador não suportado: '{format_name}'")

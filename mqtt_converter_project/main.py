@@ -14,7 +14,7 @@ from src.utils.logger import logger
 
 def main():
 
-    logger.info("--- INICIANDO APLICAÇÃO ---")
+    logger.info("--- INICIANDO APLICACAO ---")
     base_dir = os.path.dirname(os.path.abspath(__file__))
 
     # 1. Leitura de dados pelo FileReader
@@ -28,11 +28,11 @@ def main():
     logger.info(pacote)
 
     # 3. Execução da conversão pelo ConversionService
-    logger.info("\n--- INICIANDO SERVIÇO DE CONVERSÃO ---")
+    logger.info("\n--- INICIANDO SERVICO DE CONVERSAO ---")
     service = ConversionService()
     service.execute_conversion(pacote, config)
 
-    logger.info("\n--- APLICAÇÃO FINALIZADA ---")
+    logger.info("\n--- APLICACAO FINALIZADA ---")
 
 if __name__ == "__main__":
     main()
