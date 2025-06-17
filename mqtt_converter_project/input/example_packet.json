@@ -3,9 +3,9 @@
   "dup": false,
   "qos": 1,
   "retainFlag": false,
-  "topicName": "agrotech/estacao_solo_C4/leitura",
-  "packetId": "leitura-c4-009a",
+  "topicName": "dispositivos/log/bin",
+  "packetId": "log-bin-001",
   "payloadFormatIndicator": 1,
-  "contentType": "dat",
-  "payload": "id_sensor;umidade_solo_pct;ph_solo;temp_c\nESC4-015;62.5;6.8;29.4"
+  "contentType": "binary",
+  "payload": "011010010110010000111101010100110110010101101110011100110110111101110010010111110100001000111011011101100110000101101100011011110111001000111101001100010011000000110010001101000011101101110101011011100110100101100100011000010110010001100101001111010111010001101001011000110110101101110011"
 }

@@ -4,6 +4,9 @@ from .json_decoder import JsonDecoder
 from .csv_decoder import CsvDecoder
 from .xml_decoder import XmlDecoder
 from .dat_decoder import DatDecoder
+from .binary_decoder import BinaryDecoder
+from .string_decoder import StringDecoder
+from .hex_decoder import HexDecoder
 
 class DecoderFactory:
     """
@@ -25,6 +28,12 @@ class DecoderFactory:
             return XmlDecoder()
         elif format_name.lower() == 'dat':
             return DatDecoder()
+        elif format_name.lower() == 'binary':
+            return BinaryDecoder()
+        elif format_name.lower() == 'string':
+            return StringDecoder()
+        elif format_name.lower() == 'hex':
+            return HexDecoder()
 
         else:
             raise ValueError(f"Formato de decodificador não suportado: '{format_name}'")
