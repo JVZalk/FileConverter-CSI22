@@ -7,7 +7,7 @@ class CsvEncoder(AbstractEncoder):
     Implementa o codificador para arquivos CSV.
     Padrão: Strategy.
     """
-
+    _file_headers_cache = {}
     def encode(self, data: dict, file_name = "output_data.csv") -> None:
         """
         Codifica um dicionário (flattened JSON) em um arquivo CSV.
