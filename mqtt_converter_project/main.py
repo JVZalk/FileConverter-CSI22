@@ -5,6 +5,7 @@ import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '.')))
 from src.core.mqtt_packet import MqttPacket
 from src.decoder.decoder_factory import DecoderFactory
+from src.encoder.encoder_factory import EncoderFactory
 
 #Leitura dos arquivos
 base_dir = os.path.dirname(os.path.abspath(__file__))
@@ -38,5 +39,21 @@ try:
 
 except ValueError as e:
     print(f"\nErro durante a decodificação: {e}")
+except Exception as e:
+    print(f"\nOcorreu um erro inesperado: {e}")
+
+# ENCODER
+
+try:
+    encoder = EncoderFactory.get_encoder(target_format)
+    print(f"Fábrica selecionou o codificador: {type(encoder).__name__}")
+
+    # Codifica os dados padronizados em um arquivo
+    encoder.encode(dados_padronizados, file_name="output_data")
+
+    print(f"\nDados codificados com sucesso no formato '{target_format}'.")
+
+except ValueError as e:
+    print(f"\nErro durante a codificação: {e}")
 except Exception as e:
     print(f"\nOcorreu um erro inesperado: {e}")
