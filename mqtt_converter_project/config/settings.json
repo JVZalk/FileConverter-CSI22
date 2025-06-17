@@ -1,3 +1,11 @@
 {
+<<<<<<< HEAD
   "target_format": "json"
+=======
+  "target_format": "csv",
+  "input_path": "input",
+  "output_path": "output",
+  "logging_enabled": false,
+  "compression_enabled": false
+>>>>>>> eff0756a51e39cc47c2e997ae04e1097471321e7
 }
