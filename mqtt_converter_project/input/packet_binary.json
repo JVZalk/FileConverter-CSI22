@@ -1,0 +1,11 @@
+{
+  "packetType": "PUBLISH",
+  "dup": false,
+  "qos": 1,
+  "retainFlag": false,
+  "topicName": "dispositivos/data",
+  "packetId": "data-bin-001",
+  "payloadFormatIndicator": 1,
+  "contentType": "binary",
+  "payload": "01010100011001010110110101110000011001010111001001100001011101000111010101110010011000010010000000111101001000000011000100110000"
+}

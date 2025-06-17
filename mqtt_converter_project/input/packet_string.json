@@ -1,0 +1,11 @@
+{
+  "packetType": "PUBLISH",
+  "dup": false,
+  "qos": 1,
+  "retainFlag": false,
+  "topicName": "dispositivos/data",
+  "packetId": "data-text-001",
+  "payloadFormatIndicator": 1,
+  "contentType": "text",
+  "payload": "Temperatura = 10"
+}
