@@ -49,7 +49,7 @@ try:
     print(f"Fábrica selecionou o codificador: {type(encoder).__name__}")
 
     # Codifica os dados padronizados em um arquivo
-    encoder.encode(dados_padronizados, file_name="output_data")
+    encoder.encode(dados_padronizados)
 
     print(f"\nDados codificados com sucesso no formato '{target_format}'.")
 

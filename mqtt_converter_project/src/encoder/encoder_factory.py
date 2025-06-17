@@ -3,6 +3,7 @@ from .json_encoder import JsonEncoder
 from .csv_encoder import CsvEncoder
 from .xlsx_encoder import XlsxEncoder
 from .dat_encoder import DatEncoder
+from .xml_encoder import XmlEncoder
 
 class EncoderFactory:
     """
@@ -24,6 +25,8 @@ class EncoderFactory:
             return  XlsxEncoder()
         elif format_name.lower() == 'dat':
             return DatEncoder()
+        elif format_name.lower() == 'xml':
+            return XmlEncoder()
 
         else:
             raise ValueError(f"Formato de codificador não suportado: '{format_name}'")
