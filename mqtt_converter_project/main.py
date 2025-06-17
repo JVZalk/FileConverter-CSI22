@@ -1,59 +1,36 @@
-import json
+# main.py
+
 import os
 import sys
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '.')))
+
+# Imports de alto nível
+from src.utils.file_reader import FileReader
 from src.core.mqtt_packet import MqttPacket
-from src.decoder.decoder_factory import DecoderFactory
-from src.encoder.encoder_factory import EncoderFactory
+from src.core.conversion_service import ConversionService
 
-#Leitura dos arquivos
-base_dir = os.path.dirname(os.path.abspath(__file__))
+def main():
 
-config_path = os.path.join(base_dir, 'config', 'settings.json')
-with open(config_path, 'r') as f:
-    config = json.load(f)
-    target_format = config['target_format']
+    print("--- INICIANDO APLICAÇÃO ---")
+    base_dir = os.path.dirname(os.path.abspath(__file__))
 
-input_path = os.path.join(base_dir, 'input', 'example2_packet.json')
-with open(input_path, 'r') as f:
-    dados_do_pacote = json.load(f)
+    # 1. Leitura de dados pelo FileReader
+    reader = FileReader(base_dir)
+    config = reader.read_config()
+    dados_do_pacote = reader.read_input_packet('example_packet.json')
 
-# Criação do pacote
-pacote = MqttPacket(dados_do_pacote)
-print(pacote)
+    # 2. Criação do pacote
+    pacote = MqttPacket(dados_do_pacote)
+    print("Pacote MQTT criado:")
+    print(pacote)
 
-# DECODER
+    # 3. Execução da conversão pelo ConversionService
+    print("\n--- INICIANDO SERVIÇO DE CONVERSÃO ---")
+    service = ConversionService()
+    service.execute_conversion(pacote, config)
 
-formato_do_payload = pacote.content_type
-payload_bruto = pacote.payload
+    print("\n--- APLICAÇÃO FINALIZADA ---")
 
-try:
-    decoder = DecoderFactory.get_decoder(formato_do_payload)
-    print(f"Fábrica selecionou o decodificador: {type(decoder).__name__}")
-
-    dados_padronizados = decoder.decode(payload_bruto)
-    
-    print("\nPayload decodificado:")
-    print(dados_padronizados)
-
-except ValueError as e:
-    print(f"\nErro durante a decodificação: {e}")
-except Exception as e:
-    print(f"\nOcorreu um erro inesperado: {e}")
-
-# ENCODER
-
-try:
-    encoder = EncoderFactory.get_encoder(target_format)
-    print(f"Fábrica selecionou o codificador: {type(encoder).__name__}")
-
-    # Codifica os dados padronizados em um arquivo
-    encoder.encode(dados_padronizados, file_name="output_data")
-
-    print(f"\nDados codificados com sucesso no formato '{target_format}'.")
-
-except ValueError as e:
-    print(f"\nErro durante a codificação: {e}")
-except Exception as e:
-    print(f"\nOcorreu um erro inesperado: {e}")
+if __name__ == "__main__":
+    main()
