@@ -20,7 +20,7 @@ with open(input_path, 'r') as f:
     dados_do_pacote = json.load(f)
 
 # Criação do pacote
-pacote = MqttPacket(dados_do_pacote)
+pacote = MqttPacket.from_dict(dados_do_pacote)
 print(pacote)
 
 # DECODER
