@@ -1,9 +1,14 @@
-# from .decoder_interface import PayloadDecoder
-# from src.core.standard_payload import StandardPayload
+import json
+from .decoder_interface import PayloadDecoder, StandardPayload
 
-class JsonDecoder: # (PayloadDecoder)
-    """Classe que implementa a decodificação de JSON. Padrão: Strategy (Implementação Concreta)."""
+class JsonDecoder(PayloadDecoder):
+    """
+    Implementa a decodificação para o formato JSON.
+    Padrão: Strategy (Concreta).
+    """
 
-    def decode(self, payload: str): # -> StandardPayload
-        """Método para decodificar um payload no formato JSON."""
-        pass
+    def decode(self, payload: str) -> StandardPayload:
+        try:
+            return json.loads(payload)
+        except json.JSONDecodeError as e:
+            return {}

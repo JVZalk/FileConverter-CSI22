@@ -6,5 +6,5 @@
   "contentType": "json",
   "qos": 1,
   "retainFlag": true,
-  "payload": "online"
+  "payload": "{\"sensorId\": \"sala-01\", \"metrics\": {\"temperature\": 24.5, \"humidity\": 65.2}}"
 }
