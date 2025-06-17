@@ -1,4 +1,5 @@
 from .decoder_interface import PayloadDecoder, StandardPayload
+from src.utils.logger import logger
 
 class BinaryDecoder(PayloadDecoder):
     """
@@ -28,5 +29,5 @@ class BinaryDecoder(PayloadDecoder):
             return {"data": decoded_text}
             
         except (ValueError, UnicodeDecodeError) as e:
-            print(f"Erro ao decodificar Binário: {e}")
+            logger.error(f"Erro ao decodificar Binário: {e}")
             return {}

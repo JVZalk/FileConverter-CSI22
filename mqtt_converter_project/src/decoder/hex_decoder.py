@@ -1,4 +1,5 @@
 from .decoder_interface import PayloadDecoder, StandardPayload # Supondo que as classes base existam
+from src.utils.logger import logger
 
 class HexDecoder(PayloadDecoder):
     """
@@ -28,5 +29,5 @@ class HexDecoder(PayloadDecoder):
         except (ValueError, UnicodeDecodeError) as e:
             # ValueError ocorre se a string hex for inválida (ex: tamanho ímpar)
             # UnicodeDecodeError ocorre se os bytes não formam um texto UTF-8 válido
-            print(f"Erro ao decodificar Hexadecimal: {e}")
+            logger.error(f"Erro ao decodificar Hexadecimal: {e}")
             return {}

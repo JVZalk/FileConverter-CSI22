@@ -1,6 +1,7 @@
 import csv
 import io
 from .decoder_interface import PayloadDecoder, StandardPayload # Supondo que as classes base existam
+from src.utils.logger import logger
 
 class DatDecoder(PayloadDecoder):
     """
@@ -34,5 +35,5 @@ class DatDecoder(PayloadDecoder):
 
         except Exception as e:
             # Captura erros de parsing, como um payload malformado
-            print(f"Erro ao decodificar DAT: {e}")
+            logger.error(f"Erro ao decodificar DAT: {e}")
             return {}

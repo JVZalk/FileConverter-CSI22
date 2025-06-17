@@ -1,5 +1,6 @@
 import xml.etree.ElementTree as ET
 from .decoder_interface import PayloadDecoder, StandardPayload # Supondo que as classes base existam
+from src.utils.logger import logger
 
 class XmlDecoder(PayloadDecoder):
     """
@@ -29,8 +30,8 @@ class XmlDecoder(PayloadDecoder):
 
         except ET.ParseError as e:
             # Captura especificamente erros de XML malformado
-            print(f"Erro de parsing no XML: {e}")
+            logger.error(f"Erro de parsing no XML: {e}")
             return {}
         except Exception as e:
-            print(f"Erro inesperado ao decodificar XML: {e}")
+            logger.error(f"Erro inesperado ao decodificar XML: {e}")
             return {}

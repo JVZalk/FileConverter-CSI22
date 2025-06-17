@@ -9,10 +9,18 @@ class MqttPacket:
         self.topic_name = data.get('topicName', None)
         self.packet_id = data.get('packetId', None)
         self.payload_format_indicator = data.get('payloadFormatIndicator', None)
+        self.message_expiry_interval = data.get('messageExpiryInterval', None)
+        self.topic_alias = data.get('topicAlias', None)
+        self.response_topic = data.get('responseTopic', None)
+        self.correlation_data = data.get('correlationData', None)
+        self.user_property = data.get('userProperty', None)
+        self.subscription_identifier = data.get('subscriptionIdentifier', None)
         self.content_type = data.get('contentType', None)
         self.payload = data.get('payload', None)
 
     def __repr__(self):
-        return (f"MqttPacket(payload={self.payload}, formato='{self.content_type}', "
-                f"tipo='{self.packet_type}', id='{self.packet_id}', "
-                f"tópico='{self.topic_name}', qos={self.qos}, retain={self.retain_flag})")
+        attrs = []
+        for attr, value in self.__dict__.items():
+            if value is not None:
+                attrs.append(f"{attr}={repr(value)}")
+        return f"MqttPacket({', '.join(attrs)})"

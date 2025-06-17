@@ -9,10 +9,12 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '.')))
 from src.utils.file_reader import FileReader
 from src.core.mqtt_packet import MqttPacket
 from src.core.conversion_service import ConversionService
+from src.utils.logger import logger
+
 
 def main():
 
-    print("--- INICIANDO APLICAÇÃO ---")
+    logger.info("--- INICIANDO APLICAÇÃO ---")
     base_dir = os.path.dirname(os.path.abspath(__file__))
 
     # 1. Leitura de dados pelo FileReader
@@ -22,15 +24,15 @@ def main():
 
     # 2. Criação do pacote
     pacote = MqttPacket(dados_do_pacote)
-    print("Pacote MQTT criado:")
-    print(pacote)
+    logger.info("Pacote MQTT criado:")
+    logger.info(pacote)
 
     # 3. Execução da conversão pelo ConversionService
-    print("\n--- INICIANDO SERVIÇO DE CONVERSÃO ---")
+    logger.info("\n--- INICIANDO SERVIÇO DE CONVERSÃO ---")
     service = ConversionService()
     service.execute_conversion(pacote, config)
 
-    print("\n--- APLICAÇÃO FINALIZADA ---")
+    logger.info("\n--- APLICAÇÃO FINALIZADA ---")
 
 if __name__ == "__main__":
     main()
