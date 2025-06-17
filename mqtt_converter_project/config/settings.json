@@ -2,6 +2,6 @@
   "target_format": "string",
   "input_path": "input",
   "output_path": "output",
-  "logging_enabled": false,
-  "compression_enabled": false
+  "logging_enabled": true,
+  "compression_enabled": true
 }
