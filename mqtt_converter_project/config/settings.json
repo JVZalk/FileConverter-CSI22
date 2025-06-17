@@ -1,5 +1,5 @@
 {
-  "target_format": "binary",
+  "target_format": "string",
   "input_path": "input",
   "output_path": "output",
   "logging_enabled": false,
