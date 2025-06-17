@@ -1,10 +1,11 @@
 {
   "packetType": "PUBLISH",
-  "packetId": "client1",
-  "topicName": "client1/status",
-  "payloadFormatIndicator": 0,
-  "contentType": "json",
+  "dup": false,
   "qos": 1,
   "retainFlag": true,
+  "topicName": "client1/status",
+  "packetId": "client1",
+  "payloadFormatIndicator": 1,
+  "contentType": "json",
   "payload": "{\"sensorId\": \"sala-01\", \"metrics\": {\"temperature\": 24.5, \"humidity\": 65.2}}"
 }
