@@ -8,7 +8,7 @@ class CsvEncoder(AbstractEncoder):
     Padrão: Strategy.
     """
 
-    def encode(self, data: dict, file_name: str) -> None:
+    def encode(self, data: dict, file_name = "output_data.csv") -> None:
         """
         Codifica um dicionário (flattened JSON) em um arquivo CSV.
         Gerencia o cabeçalho dinamicamente e anexa dados, reescrevendo o arquivo
