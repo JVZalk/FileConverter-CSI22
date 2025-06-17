@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "target_format": "json",
+=======
+  "target_format": "dat",
+>>>>>>> 5d25321d2188e346cd8189197b60e3039a4b2509
   "input_path": "input",
   "output_path": "output",
   "logging_enabled": false,

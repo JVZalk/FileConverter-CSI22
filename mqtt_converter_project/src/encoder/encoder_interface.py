@@ -1,15 +1,13 @@
 from abc import ABC, abstractmethod
 
 class AbstractEncoder(ABC):
-    
     """   
     Define o contrato para todos os codificadores. 
     Padrão: Strategy.
     """
-
     @abstractmethod
-    def encode(self, data, file_name: str) -> None:
+    def encode(self, data: dict) -> str:
         """
-        Método abstrato obrigatório para codificar um StandardPayload (dicionário) em arquivo do tipo especifico.
+        Método abstrato para codificar um dicionário em uma STRING no formato específico.
         """
         pass

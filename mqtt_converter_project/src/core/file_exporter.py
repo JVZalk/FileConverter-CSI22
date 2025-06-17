@@ -4,4 +4,5 @@ class FileExporter:
     @staticmethod
     def export(content: str, output_path: str):
         """Método para salvar um conteúdo de texto em um arquivo."""
-        pass
+        with open(output_path, 'w', encoding='utf-8') as f:
+            f.write(content)

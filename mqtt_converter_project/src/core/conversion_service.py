@@ -1,6 +1,7 @@
 from ..decoder.decoder_factory import DecoderFactory
 from ..encoder.encoder_factory import EncoderFactory
-from .mqtt_packet import MqttPacket
+from src.core.mqtt_packet import MqttPacket
+from .file_exporter import FileExporter
 
 class ConversionService:
     """
@@ -39,11 +40,16 @@ class ConversionService:
             print(f"\nFábrica selecionou o codificador: {type(encoder).__name__}")
 
             # Codifica os dados padronizados em um arquivo
-            encoder.encode(dados_padronizados, file_name="output_data")
+            conteudo = encoder.encode(dados_padronizados)
+            print(conteudo)
 
             print(f"\nDados codificados com sucesso no formato '{target_format}'.")
+            file_name = f"output_data.{target_format}"
+            FileExporter.export(conteudo, file_name)       # Salva o arquivo
 
         except ValueError as e:
             print(f"\nErro durante a codificação: {e}")
         except Exception as e:
             print(f"\nOcorreu um erro inesperado: {e}")
+
+        
