@@ -3,8 +3,8 @@
   "packetId": "client1",
   "topicName": "client1/status",
   "payloadFormatIndicator": 0,
-  "contentType": "json",
+  "contentType": "csv",
   "qos": 1,
   "retainFlag": true,
-  "payload": "online"
+  "payload": "timestamp,user_id,action,status\n2025-06-17T11:20:00Z,user-101,login,success"
 }
