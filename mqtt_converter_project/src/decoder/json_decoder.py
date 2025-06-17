@@ -1,5 +1,6 @@
 import json
 from .decoder_interface import PayloadDecoder, StandardPayload
+from src.utils.logger import logger
 
 class JsonDecoder(PayloadDecoder):
     """
@@ -36,8 +37,8 @@ class JsonDecoder(PayloadDecoder):
             return flattened_data
             
         except json.JSONDecodeError as e:
-            print(f"Erro ao decodificar JSON: {e}")
+            logger.error(f"Erro ao decodificar JSON: {e}")
             return {}
         except Exception as e:
-            print(f"Erro durante o processo de planificação: {e}")
+            logger.error(f"Erro durante o processo de planificação: {e}")
             return {}

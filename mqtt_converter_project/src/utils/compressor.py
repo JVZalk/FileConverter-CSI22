@@ -1,5 +1,6 @@
 import os
 import zipfile
+from src.utils.logger import logger
 
 def compress_file(file_path: str) -> str:
     """
@@ -7,6 +8,7 @@ def compress_file(file_path: str) -> str:
     Retorna o caminho do arquivo .zip criado.
     """
     if not os.path.isfile(file_path):
+        logger.error(f"Arquivo não encontrado: {file_path}")
         raise FileNotFoundError(f"Arquivo não encontrado: {file_path}")
 
     base_dir = os.path.dirname(file_path)
@@ -16,6 +18,6 @@ def compress_file(file_path: str) -> str:
     with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
         arcname = os.path.basename(file_path)
         zipf.write(file_path, arcname=arcname)
-    print(f"Arquivo compactado: {zip_path}")
+    logger.info(f"Arquivo compactado: {zip_path}")
     os.remove(file_path)  # Remove o arquivo original após compactação
     return zip_path

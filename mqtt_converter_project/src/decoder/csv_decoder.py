@@ -1,6 +1,7 @@
 import csv
 import io
 from .decoder_interface import PayloadDecoder, StandardPayload
+from src.utils.logger import logger 
 
 class CsvDecoder(PayloadDecoder):
     """
@@ -19,5 +20,5 @@ class CsvDecoder(PayloadDecoder):
             first_row = next(reader, None)
             return first_row if first_row is not None else {}
         except Exception as e:
-            print(f"Erro ao decodificar CSV: {e}")
+            logger.error(f"Erro ao decodificar CSV: {e}")
             return {}

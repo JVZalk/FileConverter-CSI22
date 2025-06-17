@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 from .encoder_interface import AbstractEncoder # Mantenha a mesma interface
+from src.utils.logger import logger
 
 class XlsxEncoder(AbstractEncoder):
     """
@@ -50,7 +51,7 @@ class XlsxEncoder(AbstractEncoder):
                 # O pandas criará automaticamente o cabeçalho a partir das chaves do dicionário
                 df_new_row.to_excel(file_path, index=False)
 
-            print(f"Dados codificados e salvos em {file_name}")
+            logger.info(f"Dados codificados e salvos em {file_name}")
 
         except Exception as e:
-            print(f"Erro ao escrever arquivo XLSX: {e}")
+            logger.error(f"Erro ao escrever arquivo XLSX: {e}")

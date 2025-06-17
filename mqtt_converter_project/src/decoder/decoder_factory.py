@@ -7,6 +7,7 @@ from .dat_decoder import DatDecoder
 from .binary_decoder import BinaryDecoder
 from .string_decoder import StringDecoder
 from .hex_decoder import HexDecoder
+from src.utils.logger import logger
 
 class DecoderFactory:
     """

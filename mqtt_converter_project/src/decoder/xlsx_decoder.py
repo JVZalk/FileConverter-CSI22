@@ -1,6 +1,7 @@
 import pandas as pd
 import io
 from .decoder_interface import PayloadDecoder, StandardPayload # Supondo que as classes base existam
+from src.utils.logger import logger
 
 class XlsxDecoder(PayloadDecoder):
     """
@@ -28,5 +29,5 @@ class XlsxDecoder(PayloadDecoder):
 
         except Exception as e:
             # Captura erros de parsing, como um payload corrompido ou em formato inválido
-            print(f"Erro ao decodificar XLSX: {e}")
+            logger.error(f"Erro ao decodificar XLSX: {e}")
             return {}

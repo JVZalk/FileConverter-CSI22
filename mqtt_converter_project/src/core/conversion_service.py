@@ -4,6 +4,7 @@ from ..encoder.encoder_factory import EncoderFactory
 from src.core.mqtt_packet import MqttPacket
 from .file_exporter import FileExporter
 from src.utils.compressor import compress_file
+from src.utils.logger import logger
 
 class ConversionService:
     """
@@ -22,28 +23,28 @@ class ConversionService:
 
         try:
             decoder = DecoderFactory.get_decoder(formato_do_payload)
-            print(f"Fábrica selecionou o decodificador: {type(decoder).__name__}")
+            logger.info(f"Fábrica selecionou o decodificador: {type(decoder).__name__}")
 
             dados_padronizados = decoder.decode(payload_bruto)
-            
-            print("\nPayload decodificado:")
-            print(dados_padronizados)
+
+            logger.info("\nPayload decodificado:")
+            logger.info(dados_padronizados)
 
         except ValueError as e:
-            print(f"\nErro durante a decodificação: {e}")
+            logger.error(f"\nErro durante a decodificação: {e}")
             return
         except Exception as e:
-            print(f"\nOcorreu um erro inesperado: {e}")
+            logger.error(f"\nOcorreu um erro inesperado: {e}")
             return
 
         try:
             encoder = EncoderFactory.get_encoder(target_format)
-            print(f"\nFábrica selecionou o codificador: {type(encoder).__name__}")
+            logger.info(f"\nFábrica selecionou o codificador: {type(encoder).__name__}")
 
             conteudo = encoder.encode(dados_padronizados)
-            print(conteudo)
+            logger.info(conteudo)
 
-            print(f"\nDados codificados com sucesso no formato '{target_format}'.")
+            logger.info(f"\nDados codificados com sucesso no formato '{target_format}'.")
 
              # Torna o caminho absoluto em relação ao diretório do main.py
             base_dir = os.path.dirname(os.path.abspath(__file__))
@@ -57,13 +58,13 @@ class ConversionService:
             FileExporter.export(conteudo, full_output_path)
 
             if config.get('compression_enabled', False):
-                print("\nCompressão ativada. Compactando o arquivo de saída...")
+                logger.info("\nCompressão ativada. Compactando o arquivo de saída...")
                 try:
                     compress_file(full_output_path)
                 except Exception as e:
-                    print(f"Erro durante a compactação do arquivo: {e}")
+                    logger.error(f"Erro durante a compactação do arquivo: {e}")
 
         except ValueError as e:
-            print(f"\nErro durante a codificação: {e}")
+            logger.error(f"\nErro durante a codificação: {e}")
         except Exception as e:
-            print(f"\nOcorreu um erro inesperado: {e}")
+            logger.error(f"\nOcorreu um erro inesperado: {e}")
