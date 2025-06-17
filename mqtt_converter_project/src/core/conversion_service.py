@@ -23,7 +23,7 @@ class ConversionService:
 
         try:
             decoder = DecoderFactory.get_decoder(formato_do_payload)
-            logger.info(f"Fábrica selecionou o decodificador: {type(decoder).__name__}")
+            logger.info(f"Fabrica selecionou o decodificador: {type(decoder).__name__}")
 
             dados_padronizados = decoder.decode(payload_bruto)
 
@@ -39,7 +39,7 @@ class ConversionService:
 
         try:
             encoder = EncoderFactory.get_encoder(target_format)
-            logger.info(f"\nFábrica selecionou o codificador: {type(encoder).__name__}")
+            logger.info(f"\nFabrica selecionou o codificador: {type(encoder).__name__}")
 
             conteudo = encoder.encode(dados_padronizados)
             logger.info(conteudo)
@@ -58,7 +58,7 @@ class ConversionService:
             FileExporter.export(conteudo, full_output_path)
 
             if config.get('compression_enabled', False):
-                logger.info("\nCompressão ativada. Compactando o arquivo de saída...")
+                logger.info("\nCompressao ativada. Compactando o arquivo de saida...")
                 try:
                     compress_file(full_output_path)
                 except Exception as e:
