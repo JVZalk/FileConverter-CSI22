@@ -2,7 +2,7 @@ from .encoder_interface import AbstractEncoder
 from .json_encoder import JsonEncoder
 from .csv_encoder import CsvEncoder
 
-class DecoderFactory:
+class EncoderFactory:
     """
     Cria e retorna a instância do decodificador correto.
     Padrão: Factory Method.
