@@ -3,6 +3,7 @@ from ..decoder.decoder_factory import DecoderFactory
 from ..encoder.encoder_factory import EncoderFactory
 from src.core.mqtt_packet import MqttPacket
 from .file_exporter import FileExporter
+from src.utils.compressor import compress_file
 
 class ConversionService:
     """
@@ -54,6 +55,13 @@ class ConversionService:
 
             os.makedirs(output_dir, exist_ok=True)
             FileExporter.export(conteudo, full_output_path)
+
+            if config.get('compression_enabled', False):
+                print("\nCompressão ativada. Compactando o arquivo de saída...")
+                try:
+                    compress_file(full_output_path)
+                except Exception as e:
+                    print(f"Erro durante a compactação do arquivo: {e}")
 
         except ValueError as e:
             print(f"\nErro durante a codificação: {e}")

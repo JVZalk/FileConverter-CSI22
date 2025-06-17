@@ -17,4 +17,5 @@ def compress_file(file_path: str) -> str:
         arcname = os.path.basename(file_path)
         zipf.write(file_path, arcname=arcname)
     print(f"Arquivo compactado: {zip_path}")
+    os.remove(file_path)  # Remove o arquivo original após compactação
     return zip_path
