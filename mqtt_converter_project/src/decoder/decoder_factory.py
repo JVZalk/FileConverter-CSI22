@@ -2,6 +2,8 @@
 from .decoder_interface import PayloadDecoder
 from .json_decoder import JsonDecoder
 from .csv_decoder import CsvDecoder
+from .xml_decoder import XmlDecoder
+from .dat_decoder import DatDecoder
 
 class DecoderFactory:
     """
@@ -19,6 +21,10 @@ class DecoderFactory:
             return JsonDecoder()
         elif format_name.lower() == 'csv':
             return CsvDecoder()
+        elif format_name.lower() == 'xml':
+            return XmlDecoder()
+        elif format_name.lower() == 'dat':
+            return DatDecoder()
 
         else:
             raise ValueError(f"Formato de decodificador não suportado: '{format_name}'")
