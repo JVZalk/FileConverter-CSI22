@@ -14,12 +14,14 @@ from src.utils.logger import logger
 
 def main():
 
-    logger.info("--- INICIANDO APLICACAO ---")
     base_dir = os.path.dirname(os.path.abspath(__file__))
 
     # 1. Leitura de dados pelo FileReader
     reader = FileReader(base_dir)
     config = reader.read_config()
+    logger.set_enabled(config.get('logging_enabled', False))
+    logger.info("--- INICIANDO APLICACAO ---")
+    logger.info(f"Configuração lida: {config}")
     dados_do_pacote = reader.read_input_packet('example_packet.json')
 
     # 2. Criação do pacote
