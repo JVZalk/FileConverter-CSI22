@@ -7,5 +7,5 @@
   "packetId": "data-csv-001",
   "payloadFormatIndicator": 1,
   "contentType": "csv",
-  "payload": "sensor_id,timestamp,temperatura,umidade,pressao\n123,2024-06-17T10:00:00Z,25.3,60.2,1013.1\n124,2024-06-17T10:01:00Z,24.8,61.0,1012.8"
+  "payload": "sensor_id,timestamp,temperatura,umidade,pressao\\n123,2024-06-17T10:00:00Z,25.3,60.2,1013.1\\n124,2024-06-17T10:01:00Z,24.8,61.0,1012.8"
 }

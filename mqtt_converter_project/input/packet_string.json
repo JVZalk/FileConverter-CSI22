@@ -6,6 +6,6 @@
   "topicName": "dispositivos/data",
   "packetId": "data-text-001",
   "payloadFormatIndicator": 1,
-  "contentType": "text",
+  "contentType": "string",
   "payload": "Temperatura = 10"
 }

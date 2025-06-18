@@ -1,0 +1,42 @@
+2025-06-17 21:30:10,107 [INFO] activity_logger: --- INICIANDO APLICACAO ---
+2025-06-17 21:30:10,107 [INFO] activity_logger: Configuração lida: {'target_format': 'xml', 'input_path': 'input', 'output_path': 'output', 'logging_enabled': True, 'compression_enabled': False}
+2025-06-17 21:30:10,107 [INFO] activity_logger: Pacote MQTT criado:
+2025-06-17 21:30:10,108 [INFO] activity_logger: MqttPacket(packet_type='PUBLISH', dup=False, qos=1, retain_flag=False, topic_name='dispositivos/data', packet_id='data-bin-001', payload_format_indicator=1, content_type='binary', payload='01010100011001010110110101110000011001010111001001100001011101000111010101110010011000010010000000111101001000000011000100110000')
+2025-06-17 21:30:10,108 [INFO] activity_logger: 
+--- INICIANDO SERVICO DE CONVERSAO ---
+2025-06-17 21:30:10,108 [INFO] activity_logger: Fabrica selecionou o decodificador: BinaryDecoder
+2025-06-17 21:30:10,108 [INFO] activity_logger: 
+Payload decodificado:
+2025-06-17 21:30:10,108 [INFO] activity_logger: {'data': 'Temperatura = 10'}
+2025-06-17 21:30:10,108 [INFO] activity_logger: 
+Fabrica selecionou o codificador: XmlEncoder
+2025-06-17 21:30:10,108 [INFO] activity_logger: <root>
+  <data>Temperatura = 10</data>
+</root>
+2025-06-17 21:30:10,108 [INFO] activity_logger: 
+Dados codificados com sucesso no formato 'xml'.
+2025-06-17 21:30:10,109 [INFO] activity_logger: 
+--- APLICACAO FINALIZADA ---
+2025-06-17 21:30:19,850 [INFO] activity_logger: --- INICIANDO APLICACAO ---
+2025-06-17 21:30:19,850 [INFO] activity_logger: Configuração lida: {'target_format': 'xml', 'input_path': 'input', 'output_path': 'output', 'logging_enabled': True, 'compression_enabled': False}
+2025-06-17 21:32:07,719 [INFO] activity_logger: --- INICIANDO APLICACAO ---
+2025-06-17 21:32:07,720 [INFO] activity_logger: Configuração lida: {'target_format': 'xml', 'input_path': 'input', 'output_path': 'output', 'logging_enabled': True, 'compression_enabled': False}
+2025-06-17 21:32:07,720 [INFO] activity_logger: Pacote MQTT criado:
+2025-06-17 21:32:07,720 [INFO] activity_logger: MqttPacket(packet_type='PUBLISH', dup=False, qos=1, retain_flag=False, topic_name='dispositivos/data', packet_id='data-bin-001', payload_format_indicator=1, content_type='binary', payload='01010100011001010110110101110000011001010111001001100001011101000111010101110010011000010010000000111101001000000011000100110000')
+2025-06-17 21:32:07,720 [INFO] activity_logger: 
+--- INICIANDO SERVICO DE CONVERSAO ---
+2025-06-17 21:32:07,721 [INFO] activity_logger: Fabrica selecionou o decodificador: BinaryDecoder
+2025-06-17 21:32:07,721 [INFO] activity_logger: 
+Payload decodificado:
+2025-06-17 21:32:07,721 [INFO] activity_logger: {'data': 'Temperatura = 10'}
+2025-06-17 21:32:07,721 [INFO] activity_logger: 
+Fabrica selecionou o codificador: XmlEncoder
+2025-06-17 21:32:07,722 [INFO] activity_logger: <root>
+  <data>Temperatura = 10</data>
+</root>
+2025-06-17 21:32:07,722 [INFO] activity_logger: 
+Dados codificados com sucesso no formato 'xml'.
+2025-06-17 21:32:07,723 [INFO] activity_logger: 
+--- APLICACAO FINALIZADA ---
+2025-06-17 21:32:21,841 [INFO] activity_logger: --- INICIANDO APLICACAO ---
+2025-06-17 21:32:21,841 [INFO] activity_logger: Configuração lida: {'target_format': 'xml', 'input_path': 'input', 'output_path': 'output', 'logging_enabled': True, 'compression_enabled': False}

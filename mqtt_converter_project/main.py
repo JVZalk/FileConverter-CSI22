@@ -2,6 +2,7 @@
 
 import os
 import sys
+import json
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '.')))
 
@@ -22,7 +23,7 @@ def main():
     logger.set_enabled(config.get('logging_enabled', False))
     logger.info("--- INICIANDO APLICACAO ---")
     logger.info(f"Configuração lida: {config}")
-    dados_do_pacote = reader.read_input_packet('example_packet.json')
+    dados_do_pacote = reader.read_input_packet('packet_json.json')
 
     # 2. Criação do pacote
     pacote = MqttPacket(dados_do_pacote)
@@ -35,6 +36,37 @@ def main():
     service.execute_conversion(pacote, config)
 
     logger.info("\n--- APLICACAO FINALIZADA ---")
+
+# --- A FUNÇÃO UNIVERSAL ---
+def convert_to(content: str, output_format: str, logging_enabled: bool = False, compression_enabled: bool = False) -> str:
+
+    config = {
+        "target_format": output_format,
+        "input_path": "input",
+        "output_path": "output",
+        "logging_enabled": logging_enabled,
+        "compression_enabled": compression_enabled
+    }
+
+    logger.set_enabled(config.get('logging_enabled', False))
+    logger.info("--- INICIANDO APLICACAO ---")
+    logger.info(f"Configuração lida: {config}")
+    dados_do_pacote = json.loads(content)
+
+    # 2. Criação do pacote
+    pacote = MqttPacket(dados_do_pacote)
+    logger.info("Pacote MQTT criado:")
+    logger.info(pacote)
+
+    # 3. Execução da conversão pelo ConversionService
+    logger.info("\n--- INICIANDO SERVICO DE CONVERSAO ---")
+    service = ConversionService()
+    output_content = service.execute_conversion(pacote, config)
+
+    logger.info("\n--- APLICACAO FINALIZADA ---")
+    return output_content
+    
+
 
 if __name__ == "__main__":
     main()

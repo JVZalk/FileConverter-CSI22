@@ -7,5 +7,5 @@
   "packetId": "data-xml-001",
   "payloadFormatIndicator": 1,
   "contentType": "xml",
-  "payload": "<leituras>\n  <leitura>\n    <sensor_id>123</sensor_id>\n    <timestamp>2024-06-17T10:00:00Z</timestamp>\n    <temperatura>25.3</temperatura>\n    <umidade>60.2</umidade>\n    <pressao>1013.1</pressao>\n  </leitura>\n  <leitura>\n    <sensor_id>124</sensor_id>\n    <timestamp>2024-06-17T10:01:00Z</timestamp>\n    <temperatura>24.8</temperatura>\n    <umidade>61.0</umidade>\n    <pressao>1012.8</pressao>\n  </leitura>\n</leituras>"
+  "payload": "<leituras>\\n  <leitura>\\n    <sensor_id>123</sensor_id>\\n    <timestamp>2024-06-17T10:00:00Z</timestamp>\\n    <temperatura>25.3</temperatura>\\n    <umidade>60.2</umidade>\\n    <pressao>1013.1</pressao>\\n  </leitura>\\n  <leitura>\\n    <sensor_id>124</sensor_id>\\n    <timestamp>2024-06-17T10:01:00Z</timestamp>\\n    <temperatura>24.8</temperatura>\\n    <umidade>61.0</umidade>\\n    <pressao>1012.8</pressao>\\n  </leitura>\\n</leituras>"
 }
