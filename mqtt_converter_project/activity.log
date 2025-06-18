@@ -1,0 +1,74 @@
+2025-06-18 11:24:55,602 [INFO] activity_logger: --- INICIANDO APLICACAO ---
+2025-06-18 11:24:55,602 [INFO] activity_logger: Configuração lida: {'target_format': 'binary', 'input_path': 'input', 'input_file': 'packet_binary', 'output_path': 'output', 'logging_enabled': True, 'compression_enabled': True}
+2025-06-18 11:24:55,602 [INFO] activity_logger: Pacote MQTT criado:
+2025-06-18 11:24:55,602 [INFO] activity_logger: MqttPacket(packet_type='PUBLISH', dup=False, qos=1, retain_flag=True, topic_name='dispositivos/config/broadcast', packet_id='config-broadcast-1718714876', payload_format_indicator=1, content_type='xml', payload='<systemConfig><targetGroup>ALL_PUMPS</targetGroup><configVersion>2.1.0</configVersion><logLevel>INFO</logLevel><heartbeatIntervalSeconds>300</heartbeatIntervalSeconds><reconnectPolicy>AGGRESSIVE</reconnectPolicy><lastUpdatedBy>admin_ops</lastUpdatedBy></systemConfig>')
+2025-06-18 11:24:55,602 [INFO] activity_logger: 
+--- INICIANDO SERVICO DE CONVERSAO ---
+2025-06-18 11:24:55,602 [INFO] activity_logger: Fabrica selecionou o decodificador: XmlDecoder
+2025-06-18 11:24:55,602 [INFO] activity_logger: 
+Payload decodificado:
+2025-06-18 11:24:55,602 [INFO] activity_logger: {'targetGroup': 'ALL_PUMPS', 'configVersion': '2.1.0', 'logLevel': 'INFO', 'heartbeatIntervalSeconds': '300', 'reconnectPolicy': 'AGGRESSIVE', 'lastUpdatedBy': 'admin_ops'}
+2025-06-18 11:24:55,603 [INFO] activity_logger: 
+Fabrica selecionou o codificador: BinaryEncoder
+2025-06-18 11:24:55,610 [INFO] activity_logger: 0111101100100010011101000110000101110010011001110110010101110100010001110111001001101111011101010111000000100010001110100010001001000001010011000100110001011111010100000101010101001101010100000101001100100010001011000010001001100011011011110110111001100110011010010110011101010110011001010111001001110011011010010110111101101110001000100011101000100010001100100010111000110001001011100011000000100010001011000010001001101100011011110110011101001100011001010111011001100101011011000010001000111010001000100100100101001110010001100100111100100010001011000010001001101000011001010110000101110010011101000110001001100101011000010111010001001001011011100111010001100101011100100111011001100001011011000101001101100101011000110110111101101110011001000111001100100010001110100010001000110011001100000011000000100010001011000010001001110010011001010110001101101111011011100110111001100101011000110111010001010000011011110110110001101001011000110111100100100010001110100010001001000001010001110100011101010010010001010101001101010011010010010101011001000101001000100010110000100010011011000110000101110011011101000101010101110000011001000110000101110100011001010110010001000010011110010010001000111010001000100110000101100100011011010110100101101110010111110110111101110000011100110010001001111101
+2025-06-18 11:24:55,610 [INFO] activity_logger: 
+Dados codificados com sucesso no formato 'binary'.
+2025-06-18 11:24:55,613 [INFO] activity_logger: 
+Compressao ativada. Compactando o arquivo de saida...
+2025-06-18 11:24:55,647 [INFO] activity_logger: Arquivo compactado: c:\ITA\COMP-11\CSI-22\FileConverter-CSI22\mqtt_converter_project\output\packet_binary.zip
+2025-06-18 11:24:55,648 [INFO] activity_logger: 
+--- APLICACAO FINALIZADA ---
+2025-06-18 11:27:49,129 [INFO] activity_logger: --- INICIANDO APLICACAO ---
+2025-06-18 11:27:49,130 [INFO] activity_logger: Configuração lida: {'target_format': 'json', 'input_path': 'input', 'input_file': 'packet_json', 'output_path': 'output', 'logging_enabled': True, 'compression_enabled': False}
+2025-06-18 11:27:49,152 [INFO] activity_logger: Pacote MQTT criado:
+2025-06-18 11:27:49,153 [INFO] activity_logger: MqttPacket(packet_type='PUBLISH', dup=False, qos=1, retain_flag=False, topic_name='dispositivos/sensores', packet_id='data-json-001', payload_format_indicator=1, content_type='json', payload='{"timestamp": "2024-06-17T10:00:00Z", "leituras": [{"sensor_id": 123, "temperatura": 25.3, "umidade": 60.2, "pressao": 1013.1}, {"sensor_id": 124, "temperatura": 24.8, "umidade": 61.0, "pressao": 1012.8}]}')
+2025-06-18 11:27:49,153 [INFO] activity_logger: 
+--- INICIANDO SERVICO DE CONVERSAO ---
+2025-06-18 11:27:49,153 [INFO] activity_logger: Fabrica selecionou o decodificador: JsonDecoder
+2025-06-18 11:27:49,153 [INFO] activity_logger: 
+Payload decodificado:
+2025-06-18 11:27:49,153 [INFO] activity_logger: {'timestamp': '2024-06-17T10:00:00Z', 'leituras_0.sensor_id': 123, 'leituras_0.temperatura': 25.3, 'leituras_0.umidade': 60.2, 'leituras_0.pressao': 1013.1, 'leituras_1.sensor_id': 124, 'leituras_1.temperatura': 24.8, 'leituras_1.umidade': 61.0, 'leituras_1.pressao': 1012.8}
+2025-06-18 11:27:49,153 [INFO] activity_logger: 
+Fabrica selecionou o codificador: JsonEncoder
+2025-06-18 11:27:49,153 [INFO] activity_logger: {
+    "timestamp": "2024-06-17T10:00:00Z",
+    "leituras_0.sensor_id": 123,
+    "leituras_0.temperatura": 25.3,
+    "leituras_0.umidade": 60.2,
+    "leituras_0.pressao": 1013.1,
+    "leituras_1.sensor_id": 124,
+    "leituras_1.temperatura": 24.8,
+    "leituras_1.umidade": 61.0,
+    "leituras_1.pressao": 1012.8
+}
+2025-06-18 11:27:49,154 [INFO] activity_logger: 
+Dados codificados com sucesso no formato 'json'.
+2025-06-18 11:27:49,156 [INFO] activity_logger: 
+--- APLICACAO FINALIZADA ---
+2025-06-18 11:43:31,575 [INFO] activity_logger: --- INICIANDO APLICACAO ---
+2025-06-18 11:43:31,576 [INFO] activity_logger: Configuração lida: {'target_format': 'xml', 'input_path': 'input', 'input_file': 'packet_xml', 'output_path': 'output', 'logging_enabled': True, 'compression_enabled': True}
+2025-06-18 11:43:31,576 [INFO] activity_logger: Pacote MQTT criado:
+2025-06-18 11:43:31,576 [INFO] activity_logger: MqttPacket(packet_type='PUBLISH', dup=False, qos=1, retain_flag=True, topic_name='dispositivos/config/broadcast', packet_id='config-broadcast-1718714876', payload_format_indicator=1, content_type='xml', payload='<systemConfig><targetGroup>ALL_PUMPS</targetGroup><configVersion>2.1.0</configVersion><logLevel>INFO</logLevel><heartbeatIntervalSeconds>300</heartbeatIntervalSeconds><reconnectPolicy>AGGRESSIVE</reconnectPolicy><lastUpdatedBy>admin_ops</lastUpdatedBy></systemConfig>')
+2025-06-18 11:43:31,576 [INFO] activity_logger: 
+--- INICIANDO SERVICO DE CONVERSAO ---
+2025-06-18 11:43:31,577 [INFO] activity_logger: Fabrica selecionou o decodificador: XmlDecoder
+2025-06-18 11:43:31,577 [INFO] activity_logger: 
+Payload decodificado:
+2025-06-18 11:43:31,577 [INFO] activity_logger: {'targetGroup': 'ALL_PUMPS', 'configVersion': '2.1.0', 'logLevel': 'INFO', 'heartbeatIntervalSeconds': '300', 'reconnectPolicy': 'AGGRESSIVE', 'lastUpdatedBy': 'admin_ops'}
+2025-06-18 11:43:31,577 [INFO] activity_logger: 
+Fabrica selecionou o codificador: XmlEncoder
+2025-06-18 11:43:31,577 [INFO] activity_logger: <root>
+  <targetGroup>ALL_PUMPS</targetGroup>
+  <configVersion>2.1.0</configVersion>
+  <logLevel>INFO</logLevel>
+  <heartbeatIntervalSeconds>300</heartbeatIntervalSeconds>
+  <reconnectPolicy>AGGRESSIVE</reconnectPolicy>
+  <lastUpdatedBy>admin_ops</lastUpdatedBy>
+</root>
+2025-06-18 11:43:31,577 [INFO] activity_logger: 
+Dados codificados com sucesso no formato 'xml'.
+2025-06-18 11:43:31,580 [INFO] activity_logger: 
+Compressao ativada. Compactando o arquivo de saida...
+2025-06-18 11:43:31,599 [INFO] activity_logger: Arquivo compactado: c:\ITA\COMP-11\CSI-22\FileConverter-CSI22\mqtt_converter_project\output\packet_xml.zip
+2025-06-18 11:43:31,599 [INFO] activity_logger: 
+--- APLICACAO FINALIZADA ---
