@@ -33,7 +33,7 @@ def main():
     # 3. Execução da conversão pelo ConversionService
     logger.info("\n--- INICIANDO SERVICO DE CONVERSAO ---")
     service = ConversionService()
-    service.execute_conversion(pacote, config)
+    service.execute_conversion(pacote, config, save_enable=True)
 
     logger.info("\n--- APLICACAO FINALIZADA ---")
 
@@ -43,6 +43,7 @@ def convert_to(content: str, output_format: str, logging_enabled: bool = False, 
     config = {
         "target_format": output_format,
         "input_path": "input",
+        "input_file": f"packet_{output_format}",
         "output_path": "output",
         "logging_enabled": logging_enabled,
         "compression_enabled": compression_enabled

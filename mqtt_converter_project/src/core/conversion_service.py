@@ -11,7 +11,7 @@ class ConversionService:
     [FACADE] Orquestra todo o processo de conversão de pacotes.
     """
     
-    def execute_conversion(self, packet: MqttPacket, config: dict):
+    def execute_conversion(self, packet: MqttPacket, config: dict, save_enable = False):
         """
         Executa a lógica de decodificação e codificação que antes estava na main.py.
         """
@@ -46,6 +46,9 @@ class ConversionService:
 
             logger.info(f"\nDados codificados com sucesso no formato '{target_format}'.")
 
+            if save_enable == False:
+                return conteudo
+
              # Torna o caminho absoluto em relação ao diretório do main.py
             base_dir = os.path.dirname(os.path.abspath(__file__))
             project_root = os.path.abspath(os.path.join(base_dir, '..', '..'))
@@ -66,7 +69,6 @@ class ConversionService:
                 except Exception as e:
                     logger.error(f"Erro durante a compactação do arquivo: {e}")
             
-            return conteudo
 
         except ValueError as e:
             logger.error(f"\nErro durante a codificação: {e}")

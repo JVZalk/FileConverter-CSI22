@@ -9,30 +9,14 @@ mqtt_message_str = """
   "qos": 1,
   "retainFlag": false,
   "topicName": "dispositivos/sensores",
-  "packetId": "data-json-001",
+  "packetId": "data-csv-001",
   "payloadFormatIndicator": 1,
-  "contentType": "json",
-  "payload": {
-    "timestamp": "2024-06-17T10:00:00Z",
-    "leituras": [
-      {
-        "sensor_id": 123,
-        "temperatura": 25.3,
-        "umidade": 60.2,
-        "pressao": 1013.1
-      },
-      {
-        "sensor_id": 124,
-        "temperatura": 24.8,
-        "umidade": 61.0,
-        "pressao": 1012.8
-      }
-    ]
-  }
+  "contentType": "csv",
+  "payload": "sensor_id,timestamp,temperatura,umidade,pressao\\n123,2024-06-17T10:00:00Z,25.3,60.2,1013.1\\n124,2024-06-17T10:01:00Z,24.8,61.0,1012.8"
 }
 """
 
 # --- TESTE 1: Conversão simples para XML ---
 print("--- TESTE: ---")
-xml_output = convert_to(mqtt_message_str, 'json')
-print("Resultado:\n", xml_output)
+mensagem_convertida = convert_to(mqtt_message_str, 'json')
+print("Resultado:\n", mensagem_convertida)

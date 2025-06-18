@@ -94,3 +94,30 @@ Fabrica selecionou o codificador: JsonEncoder
 Dados codificados com sucesso no formato 'json'.
 2025-06-17 21:43:45,465 [INFO] activity_logger: 
 --- APLICACAO FINALIZADA ---
+2025-06-17 21:53:56,429 [INFO] activity_logger: --- INICIANDO APLICACAO ---
+2025-06-17 21:53:56,430 [INFO] activity_logger: Configuração lida: {'target_format': 'json', 'input_path': 'input', 'input_file': 'packet_json', 'output_path': 'output', 'logging_enabled': True, 'compression_enabled': False}
+2025-06-17 21:53:56,431 [INFO] activity_logger: Pacote MQTT criado:
+2025-06-17 21:53:56,431 [INFO] activity_logger: MqttPacket(packet_type='PUBLISH', dup=False, qos=1, retain_flag=False, topic_name='dispositivos/sensores', packet_id='data-json-001', payload_format_indicator=1, content_type='json', payload='{"timestamp": "2024-06-17T10:00:00Z", "leituras": [{"sensor_id": 123, "temperatura": 25.3, "umidade": 60.2, "pressao": 1013.1}, {"sensor_id": 124, "temperatura": 24.8, "umidade": 61.0, "pressao": 1012.8}]}')
+2025-06-17 21:53:56,431 [INFO] activity_logger: 
+--- INICIANDO SERVICO DE CONVERSAO ---
+2025-06-17 21:53:56,431 [INFO] activity_logger: Fabrica selecionou o decodificador: JsonDecoder
+2025-06-17 21:53:56,431 [INFO] activity_logger: 
+Payload decodificado:
+2025-06-17 21:53:56,431 [INFO] activity_logger: {'timestamp': '2024-06-17T10:00:00Z', 'leituras_0.sensor_id': 123, 'leituras_0.temperatura': 25.3, 'leituras_0.umidade': 60.2, 'leituras_0.pressao': 1013.1, 'leituras_1.sensor_id': 124, 'leituras_1.temperatura': 24.8, 'leituras_1.umidade': 61.0, 'leituras_1.pressao': 1012.8}
+2025-06-17 21:53:56,432 [INFO] activity_logger: 
+Fabrica selecionou o codificador: JsonEncoder
+2025-06-17 21:53:56,432 [INFO] activity_logger: {
+    "timestamp": "2024-06-17T10:00:00Z",
+    "leituras_0.sensor_id": 123,
+    "leituras_0.temperatura": 25.3,
+    "leituras_0.umidade": 60.2,
+    "leituras_0.pressao": 1013.1,
+    "leituras_1.sensor_id": 124,
+    "leituras_1.temperatura": 24.8,
+    "leituras_1.umidade": 61.0,
+    "leituras_1.pressao": 1012.8
+}
+2025-06-17 21:53:56,432 [INFO] activity_logger: 
+Dados codificados com sucesso no formato 'json'.
+2025-06-17 21:53:56,435 [INFO] activity_logger: 
+--- APLICACAO FINALIZADA ---
