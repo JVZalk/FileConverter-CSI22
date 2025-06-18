@@ -38,7 +38,7 @@ def main():
     logger.info("\n--- APLICACAO FINALIZADA ---")
 
 # --- A FUNÇÃO UNIVERSAL ---
-def convert_to(content: str, output_format: str, logging_enabled: bool = False, compression_enabled: bool = False) -> str:
+def convert_payload_to(content: str, output_format: str, logging_enabled: bool = False, compression_enabled: bool = False) -> str:
 
     config = {
         "target_format": output_format,
@@ -62,7 +62,7 @@ def convert_to(content: str, output_format: str, logging_enabled: bool = False, 
     # 3. Execução da conversão pelo ConversionService
     logger.info("\n--- INICIANDO SERVICO DE CONVERSAO ---")
     service = ConversionService()
-    output_content = service.execute_conversion(pacote, config)
+    output_content = service.execute_conversion(pacote, config, save_enable=compression_enabled)
 
     logger.info("\n--- APLICACAO FINALIZADA ---")
     return output_content

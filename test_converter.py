@@ -1,6 +1,6 @@
 import os
 import json
-from mqtt_converter_project.main import convert_to
+from mqtt_converter_project.main import convert_payload_to
 
 mqtt_message_str = """
 {
@@ -18,5 +18,5 @@ mqtt_message_str = """
 
 # --- TESTE 1: Conversão simples para XML ---
 print("--- TESTE: ---")
-mensagem_convertida = convert_to(mqtt_message_str, 'json')
+mensagem_convertida = convert_payload_to(mqtt_message_str, 'json')
 print("Resultado:\n", mensagem_convertida)

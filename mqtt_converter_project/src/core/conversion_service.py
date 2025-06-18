@@ -68,6 +68,7 @@ class ConversionService:
                     compress_file(full_output_path)
                 except Exception as e:
                     logger.error(f"Erro durante a compactação do arquivo: {e}")
+            return conteudo
             
 
         except ValueError as e:
