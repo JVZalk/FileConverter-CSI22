@@ -1,7 +1,8 @@
 {
   "target_format": "string",
   "input_path": "input",
+  "input_file": "packet_json",
   "output_path": "output",
   "logging_enabled": true,
-  "compression_enabled": true
+  "compression_enabled": false
 }

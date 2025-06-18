@@ -22,7 +22,7 @@ def main():
     logger.set_enabled(config.get('logging_enabled', False))
     logger.info("--- INICIANDO APLICACAO ---")
     logger.info(f"Configuração lida: {config}")
-    dados_do_pacote = reader.read_input_packet('example_packet.json')
+    dados_do_pacote = reader.read_input_packet(config)
 
     # 2. Criação do pacote
     pacote = MqttPacket(dados_do_pacote)

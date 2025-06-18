@@ -1,0 +1,80 @@
+2025-06-17 20:53:02,164 [INFO] activity_logger: --- INICIANDO APLICACAO ---
+2025-06-17 20:53:02,164 [INFO] activity_logger: Configuração lida: {'target_format': 'string', 'input_path': 'input', 'input_file': 'packet_json', 'output_path': 'output', 'logging_enabled': True, 'compression_enabled': False}
+2025-06-17 20:55:37,221 [INFO] activity_logger: --- INICIANDO APLICACAO ---
+2025-06-17 20:55:37,221 [INFO] activity_logger: Configuração lida: {'target_format': 'string', 'input_path': 'input', 'input_file': 'packet_json', 'output_path': 'output', 'logging_enabled': True, 'compression_enabled': False}
+2025-06-17 20:55:37,221 [INFO] activity_logger: Pacote MQTT criado:
+2025-06-17 20:55:37,221 [INFO] activity_logger: MqttPacket(packet_type='PUBLISH', dup=False, qos=1, retain_flag=False, topic_name='dispositivos/sensores', packet_id='data-json-001', payload_format_indicator=1, content_type='json', payload={'timestamp': '2024-06-17T10:00:00Z', 'leituras': [{'sensor_id': 123, 'temperatura': 25.3, 'umidade': 60.2, 'pressao': 1013.1}, {'sensor_id': 124, 'temperatura': 24.8, 'umidade': 61.0, 'pressao': 1012.8}]})
+2025-06-17 20:55:37,222 [INFO] activity_logger: 
+--- INICIANDO SERVICO DE CONVERSAO ---
+2025-06-17 20:55:37,222 [INFO] activity_logger: Fabrica selecionou o decodificador: JsonDecoder
+2025-06-17 20:55:37,222 [ERROR] activity_logger: Erro durante o processo de planificação: the JSON object must be str, bytes or bytearray, not dict
+2025-06-17 20:55:37,222 [INFO] activity_logger: 
+Payload decodificado:
+2025-06-17 20:55:37,222 [INFO] activity_logger: {}
+2025-06-17 20:55:37,222 [INFO] activity_logger: 
+Fabrica selecionou o codificador: StringEncoder
+2025-06-17 20:55:37,222 [INFO] activity_logger: {}
+2025-06-17 20:55:37,222 [INFO] activity_logger: 
+Dados codificados com sucesso no formato 'string'.
+2025-06-17 20:55:37,222 [INFO] activity_logger: 
+--- APLICACAO FINALIZADA ---
+2025-06-17 20:57:08,786 [INFO] activity_logger: --- INICIANDO APLICACAO ---
+2025-06-17 20:57:08,786 [INFO] activity_logger: Configuração lida: {'target_format': 'csv', 'input_path': 'input', 'input_file': 'packet_json', 'output_path': 'output', 'logging_enabled': True, 'compression_enabled': False}
+2025-06-17 20:57:08,787 [INFO] activity_logger: Pacote MQTT criado:
+2025-06-17 20:57:08,787 [INFO] activity_logger: MqttPacket(packet_type='PUBLISH', dup=False, qos=1, retain_flag=False, topic_name='dispositivos/sensores', packet_id='data-json-001', payload_format_indicator=1, content_type='json', payload={'timestamp': '2024-06-17T10:00:00Z', 'leituras': [{'sensor_id': 123, 'temperatura': 25.3, 'umidade': 60.2, 'pressao': 1013.1}, {'sensor_id': 124, 'temperatura': 24.8, 'umidade': 61.0, 'pressao': 1012.8}]})
+2025-06-17 20:57:08,787 [INFO] activity_logger: 
+--- INICIANDO SERVICO DE CONVERSAO ---
+2025-06-17 20:57:08,787 [INFO] activity_logger: Fabrica selecionou o decodificador: JsonDecoder
+2025-06-17 20:57:08,787 [ERROR] activity_logger: Erro durante o processo de planificação: the JSON object must be str, bytes or bytearray, not dict
+2025-06-17 20:57:08,787 [INFO] activity_logger: 
+Payload decodificado:
+2025-06-17 20:57:08,787 [INFO] activity_logger: {}
+2025-06-17 20:57:08,787 [INFO] activity_logger: 
+Fabrica selecionou o codificador: CsvEncoder
+2025-06-17 20:57:08,787 [INFO] activity_logger: 
+
+
+2025-06-17 20:57:08,787 [INFO] activity_logger: 
+Dados codificados com sucesso no formato 'csv'.
+2025-06-17 20:57:08,787 [INFO] activity_logger: 
+--- APLICACAO FINALIZADA ---
+2025-06-17 21:01:01,078 [INFO] activity_logger: --- INICIANDO APLICACAO ---
+2025-06-17 21:01:01,078 [INFO] activity_logger: Configuração lida: {'target_format': 'json', 'input_path': 'input', 'input_file': 'packet_csv', 'output_path': 'output', 'logging_enabled': True, 'compression_enabled': False}
+2025-06-17 21:01:01,083 [INFO] activity_logger: Pacote MQTT criado:
+2025-06-17 21:01:01,083 [INFO] activity_logger: MqttPacket(packet_type='PUBLISH', dup=False, qos=1, retain_flag=False, topic_name='dispositivos/sensores', packet_id='data-csv-001', payload_format_indicator=1, content_type='csv', payload='sensor_id,timestamp,temperatura,umidade,pressao\n123,2024-06-17T10:00:00Z,25.3,60.2,1013.1\n124,2024-06-17T10:01:00Z,24.8,61.0,1012.8')
+2025-06-17 21:01:01,083 [INFO] activity_logger: 
+--- INICIANDO SERVICO DE CONVERSAO ---
+2025-06-17 21:01:01,083 [INFO] activity_logger: Fabrica selecionou o decodificador: CsvDecoder
+2025-06-17 21:01:01,083 [INFO] activity_logger: 
+Payload decodificado:
+2025-06-17 21:01:01,083 [INFO] activity_logger: {'sensor_id': '123', 'timestamp': '2024-06-17T10:00:00Z', 'temperatura': '25.3', 'umidade': '60.2', 'pressao': '1013.1'}
+2025-06-17 21:01:01,083 [INFO] activity_logger: 
+Fabrica selecionou o codificador: JsonEncoder
+2025-06-17 21:01:01,083 [INFO] activity_logger: {
+    "sensor_id": "123",
+    "timestamp": "2024-06-17T10:00:00Z",
+    "temperatura": "25.3",
+    "umidade": "60.2",
+    "pressao": "1013.1"
+}
+2025-06-17 21:01:01,083 [INFO] activity_logger: 
+Dados codificados com sucesso no formato 'json'.
+2025-06-17 21:01:01,084 [INFO] activity_logger: 
+--- APLICACAO FINALIZADA ---
+2025-06-17 21:18:50,714 [INFO] activity_logger: --- INICIANDO APLICACAO ---
+2025-06-17 21:18:50,714 [INFO] activity_logger: Configuração lida: {'target_format': 'string', 'input_path': 'input', 'input_file': 'packet_json', 'output_path': 'output', 'logging_enabled': True, 'compression_enabled': False}
+2025-06-17 21:18:50,715 [INFO] activity_logger: Pacote MQTT criado:
+2025-06-17 21:18:50,715 [INFO] activity_logger: MqttPacket(packet_type='PUBLISH', dup=False, qos=1, retain_flag=False, topic_name='dispositivos/sensores', packet_id='data-json-001', payload_format_indicator=1, content_type='json', payload='{"timestamp": "2024-06-17T10:00:00Z", "leituras": [{"sensor_id": 123, "temperatura": 25.3, "umidade": 60.2, "pressao": 1013.1}, {"sensor_id": 124, "temperatura": 24.8, "umidade": 61.0, "pressao": 1012.8}]}')
+2025-06-17 21:18:50,715 [INFO] activity_logger: 
+--- INICIANDO SERVICO DE CONVERSAO ---
+2025-06-17 21:18:50,715 [INFO] activity_logger: Fabrica selecionou o decodificador: JsonDecoder
+2025-06-17 21:18:50,715 [INFO] activity_logger: 
+Payload decodificado:
+2025-06-17 21:18:50,715 [INFO] activity_logger: {'timestamp': '2024-06-17T10:00:00Z', 'leituras_0.sensor_id': 123, 'leituras_0.temperatura': 25.3, 'leituras_0.umidade': 60.2, 'leituras_0.pressao': 1013.1, 'leituras_1.sensor_id': 124, 'leituras_1.temperatura': 24.8, 'leituras_1.umidade': 61.0, 'leituras_1.pressao': 1012.8}
+2025-06-17 21:18:50,715 [INFO] activity_logger: 
+Fabrica selecionou o codificador: StringEncoder
+2025-06-17 21:18:50,715 [INFO] activity_logger: {"timestamp":"2024-06-17T10:00:00Z","leituras_0.sensor_id":123,"leituras_0.temperatura":25.3,"leituras_0.umidade":60.2,"leituras_0.pressao":1013.1,"leituras_1.sensor_id":124,"leituras_1.temperatura":24.8,"leituras_1.umidade":61.0,"leituras_1.pressao":1012.8}
+2025-06-17 21:18:50,715 [INFO] activity_logger: 
+Dados codificados com sucesso no formato 'string'.
+2025-06-17 21:18:50,715 [INFO] activity_logger: 
+--- APLICACAO FINALIZADA ---

@@ -15,9 +15,10 @@ class FileReader:
             config = json.load(f)
         return config
 
-    def read_input_packet(self, filename: str) -> dict:
+    def read_input_packet(self, config: dict) -> dict:
         """Lê o arquivo de pacote de entrada e retorna um dicionário."""
-        input_path = os.path.join(self.base_dir, 'input', filename)
+        filename = f"{config.get('input_file')}.json"
+        input_path = os.path.join(self.base_dir, config.get('input_path'), filename)
         with open(input_path, 'r') as f:
             dados_do_pacote = json.load(f)
         return dados_do_pacote
