@@ -51,8 +51,10 @@ class ConversionService:
             project_root = os.path.abspath(os.path.join(base_dir, '..', '..'))
             output_dir = os.path.join(project_root, output_path)
 
-            file_name = f"output_data.{target_format}"
+            file_name = f"{config.get('input_file')}.{target_format}"
             full_output_path = os.path.join(output_dir, file_name)
+            if full_output_path.endswith(('.binary', '.hex', '.string')):
+                full_output_path = full_output_path.rsplit('.', 1)[0] + '.txt'
 
             os.makedirs(output_dir, exist_ok=True)
             FileExporter.export(conteudo, full_output_path)

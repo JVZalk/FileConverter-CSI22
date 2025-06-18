@@ -1,4 +1,5 @@
 # src/core/mqtt_packet.py
+import json
 
 class MqttPacket:
     def __init__(self, data: dict):
@@ -16,7 +17,11 @@ class MqttPacket:
         self.user_property = data.get('userProperty', None)
         self.subscription_identifier = data.get('subscriptionIdentifier', None)
         self.content_type = data.get('contentType', None)
-        self.payload = data.get('payload', None)
+        payload = data.get('payload', None)
+        if isinstance(payload, dict):
+            self.payload = json.dumps(payload)
+        else:
+            self.payload = payload
 
     def __repr__(self):
         attrs = []
