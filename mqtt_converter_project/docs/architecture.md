@@ -1,51 +1,117 @@
-# Arquitetura do Projeto - CSI22 File Converter
+
+# Arquitetura do Sistema – FileConverter-CSI22
 
 ## Visão Geral
 
-O projeto segue princípios de Programação Orientada a Objetos (POO) e utiliza padrões como Facade, Factory, Strategy e Decorator para modularidade, flexibilidade e extensão. Também adota princípios SOLID, como o SRP (Single Responsibility Principle).
+O **FileConverter-CSI22** é um sistema middleware desenvolvido para conversão de payloads de pacotes MQTT entre diferentes formatos de dados, incluindo JSON, XML, CSV, DAT, Binário, Hexadecimal e String. Seu objetivo é garantir a interoperabilidade entre dispositivos heterogêneos em redes IoT, sistemas distribuídos e ambientes corporativos.
 
-## Componentes Principais
+O sistema é projetado com base em princípios de **Programação Orientada a Objetos (POO)** e faz uso extensivo de **Padrões de Projeto**, assegurando modularidade, extensibilidade, manutenção facilitada e clareza na organização do código.
 
-- **main.py**: Ponto de entrada. Orquestra a leitura de arquivos, criação do pacote MQTT e chamada do serviço de conversão.
-- **src/core/conversion_service.py**: [Facade] Centraliza o fluxo de conversão (decodificação, codificação, exportação e compressão).
-- **src/core/mqtt_packet.py**: Representa o pacote MQTT como objeto.
-- **src/decoder/**: Implementa decodificadores para diferentes formatos de entrada (JSON, CSV, XML, DAT, etc.) usando o padrão Strategy.
-- **src/encoder/**: Implementa codificadores para diferentes formatos de saída usando o padrão Strategy.
-- **src/utils/**: Utilitários para leitura de arquivos, logging e compressão, aplicando o padrão Decorator para adicionar funcionalidades como compressão e logging sem alterar a lógica principal.
+---
 
-## Padrões de Projeto
+## Estrutura de Componentes
 
-- **Facade**: `ConversionService` simplifica o uso do sistema para o usuário.
-- **Factory**: `DecoderFactory` e `EncoderFactory` instanciam dinamicamente o decodificador/codificador correto.
-- **Strategy**: Cada formato de entrada/saída é uma estratégia independente.
-- **Decorator**: Utilizado para adicionar funcionalidades como compressão de arquivos (`compress_file`) e logging, permitindo estender comportamentos sem modificar as classes principais.
+O projeto é organizado nas seguintes pastas principais:
 
-## Princípios de Projeto
+```
+mqtt_converter_project/
+├── main.py                
+├── config/                
+├── input/                 
+├── output/                
+├── src/                   
+│   ├── core/              
+│   ├── decoder/           
+│   ├── encoder/           
+│   └── utils/             
+└── tests/                 
+```
 
-- **SRP (Single Responsibility Principle)**: Cada classe tem uma responsabilidade única, facilitando manutenção e testes.
-- **SOLID**: O projeto busca seguir outros princípios SOLID, como a separação de interfaces e a inversão de dependências, promovendo código limpo e desacoplado.
+---
 
-## Fluxo de Dados
+## Arquitetura do Sistema
 
-1. O usuário coloca um arquivo na pasta `input/`.
-2. O `main.py` lê as configurações e o arquivo de entrada.
-3. Um objeto `MqttPacket` é criado.
-4. O `ConversionService`:
-   - Seleciona o decodificador adequado via `DecoderFactory`.
-   - Decodifica o payload para um formato padrão.
-   - Seleciona o codificador via `EncoderFactory`.
-   - Codifica os dados no formato desejado.
-   - Exporta o arquivo para a pasta de saída.
-   - (Opcional) Aplica compressão usando o padrão Decorator.
-   - (Opcional) Realiza logging das operações.
+### 🔹 Componentes Principais
+
+| Componente         | Descrição                                                                                   |
+|--------------------|----------------------------------------------------------------------------------------------|
+| **FileReader**     | Lê arquivos de configuração e de entrada (pacotes MQTT).                                    |
+| **MqttPacket**     | Modelo que representa um pacote MQTT, contendo metadados e o payload.                       |
+| **DecoderFactory** | Cria instâncias dos decodificadores adequados ao formato de entrada.                        |
+| **EncoderFactory** | Cria instâncias dos codificadores de acordo com o formato de saída.                         |
+| **PayloadDecoder** | Interface abstrata para decodificadores (`decode(payload) → StandardPayload`).              |
+| **AbstractEncoder**| Interface abstrata para codificadores (`encode(data) → str`).                               |
+| **ConversionService** | Orquestra o processo completo de conversão de payload.                                   |
+| **FileExporter**   | Salva o payload convertido em um arquivo `.txt` (UTF-8).                                     |
+| **Compressor**     | Realiza compressão opcional dos arquivos gerados (ZIP).                                      |
+| **ConditionalLogger** | Singleton para controle e registro de logs.                                              |
+| **StandardPayload**| Estrutura intermediária (geralmente um `dict` ou `list`) usada na conversão.                 |
+
+---
+
+## Fluxo de Funcionamento
+
+1. **Leitura de Configurações e Entrada**
+   - O `FileReader` lê o arquivo JSON de configuração e o arquivo de entrada contendo o pacote MQTT.
+
+2. **Criação do Objeto MqttPacket**
+   - As informações do JSON de entrada são encapsuladas na classe `MqttPacket`.
+
+3. **Decodificação**
+   - O `ConversionService` solicita à `DecoderFactory` o decoder apropriado.
+   - O decoder transforma o payload bruto em uma estrutura intermediária (`StandardPayload`).
+
+4. **Codificação**
+   - A `EncoderFactory` fornece o encoder correspondente ao formato de saída configurado.
+   - O encoder transforma o `StandardPayload` em uma string no formato desejado.
+
+5. **Exportação**
+   - O `FileExporter` salva a string convertida em um arquivo `.txt` codificado em UTF-8.
+
+6. **Compressão (Opcional)**
+   - Caso habilitado, o `Compressor` gera um arquivo ZIP contendo o `.txt`.
+
+7. **Logging (Opcional)**
+   - Todas as ações são registradas pelo `ConditionalLogger` (Singleton).
+
+8. **Uso como Biblioteca**
+   - A função `convert_payload_to` permite uso externo retornando o conteúdo convertido.
+
+---
+
+## Padrões de Projeto Aplicados
+
+| Padrão                  | Aplicação no Sistema                                                         |
+|-------------------------|------------------------------------------------------------------------------|
+| **Factory Method**       | Criação de decodificadores e codificadores.                                 |
+| **Strategy**             | Estratégias de decodificação e codificação.                                 |
+| **Facade**               | `ConversionService` encapsula toda a complexidade interna.                 |
+| **Decorator** (parcial)  | Funcionalidades opcionais (compressão, logging) poderiam ser decorators.    |
+| **Singleton**            | `ConditionalLogger` garante instância única.                                |
+
+---
 
 ## Diagramas
 
-- Consulte os diagramas de classe e sequência em `docs/classdiagram.png` e `docs/sequencediagram.png`.
+### Diagrama de Classes
+![Diagrama de Classes](./classdiagram.png)
+
+### Diagrama de Sequência
+![Diagrama de Sequência](./sequencediagram.png)
+
+---
 
 ## Extensibilidade
 
-- Para adicionar novos formatos, basta criar uma nova classe de decoder/encoder e registrar na respectiva Factory.
-- Novas funcionalidades (ex: criptografia, validação) podem ser adicionadas facilmente usando o padrão Decorator.
+O sistema é facilmente extensível. Para adicionar um novo formato:
+
+1. Implementar:
+   - Um `Decoder` (herda de `PayloadDecoder`).
+   - Um `Encoder` (herda de `AbstractEncoder`).
+2. Registrar na `DecoderFactory` e na `EncoderFactory`.
 
 ---
+
+## Conclusão
+
+A arquitetura do FileConverter-CSI22 prioriza modularidade, simplicidade de uso e facilidade de manutenção. A separação clara entre decodificação, codificação e serviços auxiliares permite não apenas o uso como aplicação, mas também sua integração como uma biblioteca em sistemas maiores.
